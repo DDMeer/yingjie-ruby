@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.hosts << "6db7561ec85d48a09a2bf421acd194e4.vfs.cloud9.eu-central-1.amazonaws.com"
+  cconfig.hosts << "fd9352684c434f469b108c5fd3423f64.vfs.cloud9.us-east-2.amazonaws.com"
   config.action_mailer.default_url_options = {host: "https://6db7561ec85d48a09a2bf421acd194e4.vfs.cloud9.eu-central-1.amazonaws.com"}
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
