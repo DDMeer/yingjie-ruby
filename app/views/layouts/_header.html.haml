@@ -6,15 +6,18 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      = long_active_link_to root_path do
-        .fa.fa-home
-        Home
-      = long_active_link_to tags_path do
-        .fa.fa-tags
-        Tags
-      = long_active_link_to courses_path do
-        .fa.fa-graduation-cap
-        Articles
+      .form-inline
+        = long_active_link_to root_path do
+          .fa.fa-home
+          Home
+      .form-inline
+        = long_active_link_to tags_path do
+          .fa.fa-tags
+          Tags
+      .form-inline
+        = long_active_link_to courses_path do
+          .fa.fa-graduation-cap
+          Articles
       .form-inline
         /SEARCH IN NAVBAR
         //temporary if statement. when a user tries to log in and there is a form input error, @ransack_courses is not initialized.
