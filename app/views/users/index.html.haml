@@ -26,7 +26,7 @@
         %th= sort_link(@q, :created_at)
         %th= sort_link(@q, :confirmed_at)
         %th Roles
-        %th= sort_link(@q, :Articles_count)
+        %th= sort_link(@q, :courses_count)
         %th= sort_link(@q, :enrollments_count)
         %th= sort_link(@q, :comments_count)
         %th= sort_link(@q, :user_lessons_count, "Lessons viewed")
@@ -56,7 +56,7 @@
                 = role.name
             - if policy(user).edit?
               = link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-warning btn-block'
-          %td= user.Articles_count
+          %td= user.courses_count
           %td= user.enrollments_count
           %td= user.comments_count
           %td= user.user_lessons_count

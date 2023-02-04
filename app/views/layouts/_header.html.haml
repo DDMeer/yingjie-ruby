@@ -17,7 +17,7 @@
         Articles
       .form-inline
         /SEARCH IN NAVBAR
-        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_Articles is not initialized.
+        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_courses is not initialized.
         - if @ransack_courses.present?
           = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
             .input-group
@@ -65,7 +65,7 @@
                 Enrollments: Teaching
                 .badge.badge-danger
                   = current_user.students.count
-                  /= Enrollment.joins(:course).where(Articles: {user: current_user}).count
+                  /= Enrollment.joins(:course).where(courses: {user: current_user}).count
         - if current_user.has_role?(:admin)
           %li.nav-item.dropdown
             %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

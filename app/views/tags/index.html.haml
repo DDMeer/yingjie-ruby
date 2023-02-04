@@ -7,7 +7,7 @@
     - @tags.each do |tag|
       .row
       .btn-group
-        = link_to Articles_path(Articles_search: {course_tags_tag_id_eq: tag.id}), class: "btn btn-lg btn-info mt-1" do
+        = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}), class: "btn btn-lg btn-info mt-1" do
           = tag.name
           .badge.badge-light
             = tag.course_tags_count
