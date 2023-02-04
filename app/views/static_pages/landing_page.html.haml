@@ -7,7 +7,7 @@
   .p-4
   - if current_user
     .p-3
-    = search_form_for @ransack_Articles, as: :Articles_search, url: Articles_path do |f|
+    = search_form_for @ransack_articles, as: :articles_search, url: articles_path do |f|
       .input-group
         = f.search_field :title_cont, class: 'form-control-lg', style: 'float: left; width: 200px; ', placeholder: 'Find a course', :autocomplete => :off
         %span.input-group-append
