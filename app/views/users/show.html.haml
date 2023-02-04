@@ -96,7 +96,7 @@
       .card-header
         %b Articles: Teaching
       .card-body
-        - @Articles_teaching.each do |course|
+        - @Acourses_teaching.each do |course|
           .row
           = link_to course.title, course_path(course)
     %p
@@ -104,6 +104,6 @@
       .card-header
         %b Articles: Learning
       .card-body
-        - @articles_learning.each do |enrollment|
+        - @courses_learning.each do |enrollment|
           .row
           = link_to enrollment.course.title, course_path(enrollment.course)
