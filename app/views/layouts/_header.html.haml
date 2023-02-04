@@ -18,8 +18,8 @@
       .form-inline
         /SEARCH IN NAVBAR
         //temporary if statement. when a user tries to log in and there is a form input error, @ransack_Articles is not initialized.
-        - if @ransack_Articles.present?
-          = search_form_for @ransack_Articles, as: :Articles_search, url: Articles_path do |f|
+        - if @ransack_courses.present?
+          = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
             .input-group
               = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
               %span.input-group-append
