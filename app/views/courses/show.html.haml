@@ -100,15 +100,15 @@
 
   .col-lg-4.order-0.order-lg-1
     .sticky-top
-      = render 'courses/course', course: @course
+      = render 'Articles/course', course: @course
     %p
 
 /%hr
 /%h4 
 /  .fa.fa-graduation-cap
-/  Related Courses
+/  Related Articles
 /.row
-/- @course.similiar_courses.each do |course|
+/- @course.similiar_Articles.each do |course|
 /  .col-md-6
-/    = render 'courses/course', course: course
+/    = render 'Articles/course', course: course
 /    %p

@@ -55,7 +55,7 @@
         = link_to course_path(@lesson.course) do
           = @lesson.course.title
         .row
-        = render 'courses/progress', course: @lesson.course
+        = render 'Articles/progress', course: @lesson.course
 
     .list-group
       #scrollable

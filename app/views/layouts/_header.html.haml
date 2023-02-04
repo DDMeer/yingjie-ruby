@@ -12,14 +12,14 @@
       = long_active_link_to tags_path do
         .fa.fa-tags
         Tags
-      = long_active_link_to courses_path do
+      = long_active_link_to Articles_path do
         .fa.fa-graduation-cap
-        Courses
+        Articles
       .form-inline
         /SEARCH IN NAVBAR
-        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_courses is not initialized.
-        - if @ransack_courses.present?
-          = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_Articles is not initialized.
+        - if @ransack_Articles.present?
+          = search_form_for @ransack_Articles, as: :Articles_search, url: Articles_path do |f|
             .input-group
               = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
               %span.input-group-append
@@ -36,14 +36,14 @@
               .fa.fa-graduation-cap
               Learn
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "studentDropdown"}
-              = link_to learning_courses_path, class: "dropdown-item #{'active' if current_page?(learning_courses_path)}" do
+              = link_to learning_Articles_path, class: "dropdown-item #{'active' if current_page?(learning_Articles_path)}" do
                 .fa.fa-graduation-cap
-                Courses: Learning
+                Articles: Learning
                 .badge.badge-danger
                   = current_user.enrollments_count
-              = link_to pending_review_courses_path, class: "dropdown-item #{'active' if current_page?(pending_review_courses_path)}" do
+              = link_to pending_review_Articles_path, class: "dropdown-item #{'active' if current_page?(pending_review_Articles_path)}" do
                 .fa.fa-star
-                Courses: Pending Review
+                Articles: Pending Review
                 .badge.badge-danger
                   = current_user.enrollments.pending_review.count
         - if current_user.has_role?(:teacher)
@@ -55,26 +55,26 @@
               = link_to new_course_path, class: "dropdown-item #{'active' if current_page?(new_course_path)}" do
                 .fa.fa-plus
                 Create Course
-              = link_to teaching_courses_path, class: "dropdown-item #{'active' if current_page?(teaching_courses_path)}" do
+              = link_to teaching_Articles_path, class: "dropdown-item #{'active' if current_page?(teaching_Articles_path)}" do
                 .fa.fa-graduation-cap
-                Courses: Teaching
+                Articles: Teaching
                 .badge.badge-danger
-                  = current_user.courses_count
+                  = current_user.Articles_count
               = link_to teaching_enrollments_path, class: "dropdown-item #{'active' if current_page?(teaching_enrollments_path)}" do
                 .fa.fa-lock-open
                 Enrollments: Teaching
                 .badge.badge-danger
                   = current_user.students.count
-                  /= Enrollment.joins(:course).where(courses: {user: current_user}).count
+                  /= Enrollment.joins(:course).where(Articles: {user: current_user}).count
         - if current_user.has_role?(:admin)
           %li.nav-item.dropdown
             %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               .fa.fa-cog
               Admin
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "adminDropdown"}
-              = link_to unapproved_courses_path, class: "dropdown-item #{'active' if current_page?(unapproved_courses_path)}" do
+              = link_to unapproved_Articles_path, class: "dropdown-item #{'active' if current_page?(unapproved_Articles_path)}" do
                 .fa.fa-graduation-cap
-                Courses: Unapproved 
+                Articles: Unapproved 
                 .badge.badge-danger
                   = Course.unapproved.published.count
               = link_to users_path, class: "dropdown-item #{'active' if current_page?(users_path)}" do

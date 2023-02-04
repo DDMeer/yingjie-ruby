@@ -62,8 +62,8 @@
           = @user.balance
       .card-footer
         .fa.fa-graduation-cap
-        Courses created:
-        = @user.courses_count
+        Articles created:
+        = @user.Articles_count
         .row
         .fa.fa-lock-open
         Enrollments:
@@ -94,16 +94,16 @@
   .col-md-6
     .card.shadow
       .card-header
-        %b Courses: Teaching
+        %b Articles: Teaching
       .card-body
-        - @courses_teaching.each do |course|
+        - @Articles_teaching.each do |course|
           .row
           = link_to course.title, course_path(course)
     %p
     .card.shadow
       .card-header
-        %b Courses: Learning
+        %b Articles: Learning
       .card-body
-        - @courses_learning.each do |enrollment|
+        - @Articles_learning.each do |enrollment|
           .row
           = link_to enrollment.course.title, course_path(enrollment.course)

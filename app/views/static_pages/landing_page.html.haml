@@ -1,13 +1,13 @@
 - content_for :title do
-  Flexportmini Online Courses
+  Flexportmini Online Articles
 
 .jumbotron.shadow.parallax
   %h1.text-shadow
-    %b Good Ruby on Rails courses
+    %b Good Ruby on Rails Articles
   .p-4
   - if current_user
     .p-3
-    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+    = search_form_for @ransack_Articles, as: :Articles_search, url: Articles_path do |f|
       .input-group
         = f.search_field :title_cont, class: 'form-control-lg', style: 'float: left; width: 200px; ', placeholder: 'Find a course', :autocomplete => :off
         %span.input-group-append
@@ -15,7 +15,7 @@
             %span.fa.fa-search{"aria-hidden" => "true"}
     .p-2
   - else
-    %h3.text-shadow Join to access all the courses
+    %h3.text-shadow Join to access all the Articles
     .p-2
     = link_to 'Register', new_user_registration_path, class: 'btn btn-custom-purple btn-lg'
     = link_to 'Login', new_user_session_path, class: 'btn btn-custom-purple btn-lg'
@@ -37,7 +37,7 @@
     .card-body
       %h1
         .fa.fa-graduation-cap
-      = pluralize(Course.approved.published.count, 'online courses')
+      = pluralize(Course.approved.published.count, 'online Articles')
       .row
       %small Explore a variety of fresh topics
   .card
@@ -68,7 +68,7 @@
   .fa.fa-tags
   Top Categories
 - @popular_tags.each do |tag|
-  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+  = link_to Articles_path(Articles_search: {course_tags_tag_id_eq: tag.id}) do
     .mt-1.btn.btn-info
       = tag.name
       %span.badge.badge-light
@@ -77,10 +77,10 @@
 
 %h2
   .fa.fa-chart-line
-  = link_to 'Popular courses', courses_path(courses_search: {s: 'enrollments_count desc'})
+  = link_to 'Popular Articles', Articles_path(Articles_search: {s: 'enrollments_count desc'})
 .row
-  - @courses.each do |course|
-    = render 'courses/course_landscape', course: course
+  - @Articles.each do |course|
+    = render 'Articles/course_landscape', course: course
     %p
 
 .card-group.shadow
@@ -91,7 +91,7 @@
         Go at your own pace
       %br
       %small
-        Enjoy lifetime access to courses whenever you want
+        Enjoy lifetime access to Articles whenever you want
   .card
     .card-body
       %b
@@ -104,7 +104,7 @@
     .card-body
       %b
         .far.fa-play-circle
-        Find video courses on almost any topic
+        Find video Articles on almost any topic
       %br
       %small
         Build your library for your career and personal growth
