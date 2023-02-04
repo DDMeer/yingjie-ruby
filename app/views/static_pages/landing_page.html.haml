@@ -36,21 +36,21 @@
   .card
     .card-body
       %h1
-        .fa.fa-graduation-cap
+        .fa.fa-infinity
       = pluralize(Course.approved.published.count, 'online Articles')
       .row
       %small Find Out What Your Supply Chain Can Really Do
   .card
     .card-body
       %h1
-        .fa.fa-chalkboard-teacher
+        .fa.fa-infinity
       = pluralize(Course.distinct.count(:user_id), 'expert instructors')
       .row
       %small Raise the Bar on Your Supply Chain
   .card
     .card-body
       %h1
-        .fa.fa-user-graduate
+        .fa.fa-infinity
       = pluralize(User.count, 'active learners')
       .row
       %small 10,000+ Companies Choose Flexportmini
