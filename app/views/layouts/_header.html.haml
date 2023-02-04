@@ -6,7 +6,9 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-     Home
+      = long_active_link_to root_path do
+        .fa.fa-home
+        Home
       = long_active_link_to tags_path do
         .fa.fa-tags
         Tags
