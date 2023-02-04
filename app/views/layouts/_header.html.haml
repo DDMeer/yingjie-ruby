@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.purple-background
   %a.navbar-brand{:href => "/"}
     = image_tag 'logo-navbar.png', size: '30x30', alt: "logo", class: "d-inline-block align-top"
-    Flexportmini
+    Corsego
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -14,10 +14,10 @@
         Tags
       = long_active_link_to courses_path do
         .fa.fa-graduation-cap
-        Articles
+        Courses
       .form-inline
         /SEARCH IN NAVBAR
-        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_Articles is not initialized.
+        //temporary if statement. when a user tries to log in and there is a form input error, @ransack_courses is not initialized.
         - if @ransack_courses.present?
           = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
             .input-group
@@ -38,12 +38,12 @@
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "studentDropdown"}
               = link_to learning_courses_path, class: "dropdown-item #{'active' if current_page?(learning_courses_path)}" do
                 .fa.fa-graduation-cap
-                Articles: Learning
+                Courses: Learning
                 .badge.badge-danger
                   = current_user.enrollments_count
               = link_to pending_review_courses_path, class: "dropdown-item #{'active' if current_page?(pending_review_courses_path)}" do
                 .fa.fa-star
-                Articles: Pending Review
+                Courses: Pending Review
                 .badge.badge-danger
                   = current_user.enrollments.pending_review.count
         - if current_user.has_role?(:teacher)
@@ -57,7 +57,7 @@
                 Create Course
               = link_to teaching_courses_path, class: "dropdown-item #{'active' if current_page?(teaching_courses_path)}" do
                 .fa.fa-graduation-cap
-                Articles: Teaching
+                Courses: Teaching
                 .badge.badge-danger
                   = current_user.courses_count
               = link_to teaching_enrollments_path, class: "dropdown-item #{'active' if current_page?(teaching_enrollments_path)}" do
@@ -65,7 +65,7 @@
                 Enrollments: Teaching
                 .badge.badge-danger
                   = current_user.students.count
-                  /= Enrollment.joins(:course).where(Articles: {user: current_user}).count
+                  /= Enrollment.joins(:course).where(courses: {user: current_user}).count
         - if current_user.has_role?(:admin)
           %li.nav-item.dropdown
             %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -74,7 +74,7 @@
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "adminDropdown"}
               = link_to unapproved_courses_path, class: "dropdown-item #{'active' if current_page?(unapproved_courses_path)}" do
                 .fa.fa-graduation-cap
-                Articles: Unapproved 
+                Courses: Unapproved 
                 .badge.badge-danger
                   = Course.unapproved.published.count
               = link_to users_path, class: "dropdown-item #{'active' if current_page?(users_path)}" do
