@@ -7,7 +7,7 @@
   .p-4
   - if current_user
     .p-3
-    = search_form_for @ransack_articles, as: :articles_search, url: articles_path do |f|
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group
         = f.search_field :title_cont, class: 'form-control-lg', style: 'float: left; width: 200px; ', placeholder: 'Find a course', :autocomplete => :off
         %span.input-group-append
@@ -68,7 +68,7 @@
   .fa.fa-tags
   Top Categories
 - @popular_tags.each do |tag|
-  = link_to Articles_path(Articles_search: {course_tags_tag_id_eq: tag.id}) do
+  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
     .mt-1.btn.btn-info
       = tag.name
       %span.badge.badge-light
@@ -77,10 +77,10 @@
 
 %h2
   .fa.fa-chart-line
-  = link_to 'Popular Articles', articles_path(articles_search: {s: 'enrollments_count desc'})
+  = link_to 'Popular Articles', courses_path(courses_search: {s: 'enrollments_count desc'})
 .row
-  - @articles.each do |course|
-    = render 'articles/course_landscape', course: course
+  - @courses.each do |course|
+    = render 'courses/course_landscape', course: course
     %p
 
 .card-group.shadow
