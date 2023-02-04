@@ -36,13 +36,13 @@
         = f.label :teacher
         = f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm'
         .row
-        = sort_link(@ransack_Articles, :price)
+        = sort_link(@ransack_courses, :price)
         .row
-        = sort_link(@ransack_Articles, :average_rating, "Top Rated")
+        = sort_link(@ransack_courses, :average_rating, "Top Rated")
         .row
-        = sort_link(@ransack_Articles, :enrollments_count, "Most Popular")
+        = sort_link(@ransack_courses, :enrollments_count, "Most Popular")
         .row
-        = sort_link(@ransack_Articles, :created_at, "Fresh")
+        = sort_link(@ransack_courses, :created_at, "Fresh")
         .row
         = f.button :search, class: "btn btn-block btn-primary"
         - if params[:Articles_search]
